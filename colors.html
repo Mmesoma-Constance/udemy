@@ -1,0 +1,98 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .boxDiv {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        align-content: center;
+        margin: 30px;
+      }
+
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+      }
+
+      .name {
+        font-size: 40px;
+        font-weight: 600;
+        padding: 10px;
+
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .colorBtn {
+        display: flex;
+        justify-content: center;
+        background-color: darkcyan;
+        color: white;
+        padding: 20px;
+        margin: 10px;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        align-items: center;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="name">Color Palette</div>
+    <button class="colorBtn">Click to Create Colors !</button>
+    <div class="boxDIv">
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+      <div class="">
+        <div class="box"></div>
+        <p class="colorName"></p>
+      </div>
+    </div>
+
+    <script>
+      const randomInt = (min, max) =>
+        Math.floor(Math.random() * (max - min + 1) + min);
+
+      const randomColor = () =>
+        `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+      document
+        .querySelector(".colorBtn")
+        .addEventListener("click", function (e) {
+          document.querySelectorAll(".box").forEach((box) => {
+            box.style.backgroundColor = randomColor();
+
+            document.querySelectorAll(".colorName").forEach((name) => {
+              name.textContent = randomColor(0, 255);
+            });
+          });
+        });
+    </script>
+  </body>
+</html>

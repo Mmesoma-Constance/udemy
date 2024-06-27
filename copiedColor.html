@@ -1,0 +1,142 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .boxDiv {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+
+        margin: 30px;
+
+        align-items: center;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 120px;
+        width: 120px;
+        background-color: gainsboro;
+        border-radius: 15px;
+      }
+
+      .name {
+        font-size: 40px;
+        font-weight: 600;
+        padding: 10px;
+
+        text-align: center;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: darkolivegreen;
+      }
+      .colorBtn {
+        display: flex;
+        justify-content: center;
+        background-color: darkolivegreen;
+        color: white;
+        padding: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin: 10px;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        align-items: center;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 50px;
+      }
+
+      .colorID {
+        text-align: center;
+        font-size: 15px;
+        padding-top: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .colorName {
+        font-size: 13px;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="name">ColorBoxMagic</div>
+    <button class="colorBtn">Click to Create Colors !</button>
+    <div class="boxDIv">
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+      <div class="boxes">
+        <div class="box">
+          <span class="colorID">#CCCCCC</span>
+        </div>
+        <p class="colorName"></p>
+      </div>
+    </div>
+
+    <script>
+      function hexColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function rgbColor(rgb) {
+        const bigint = parseInt(rgb.slice(1), 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return `rgb(${r}, ${g}, ${b},)`;
+      }
+
+      document
+        .querySelector(".colorBtn")
+        .addEventListener("click", function (e) {
+          document.querySelectorAll(".boxes").forEach((box) => {
+            const newColor = hexColor();
+            box.querySelector(".box").style.backgroundColor = newColor;
+            box.querySelector(".colorID").textContent = newColor;
+
+            box.querySelector(".colorName").textContent = rgbColor(newColor);
+          });
+        });
+    </script>
+  </body>
+</html>
